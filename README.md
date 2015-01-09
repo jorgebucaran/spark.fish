@@ -13,6 +13,7 @@ git clone https://github.com/bucaran/shark
 cd shark
 cp shark /your/bin/shark # e.g /usr/local/bin/shark
 fish -c "for i in (seq 127); random; end" | shark
+$ ▁▂▇▂▃▇▅▆▅▁▅▅▁▆▇▁▁▅▁▁▆▅▅▃▁▅▃▆▁ ...
 ```
 
 Or better yet, use a framework to manage your :fish: shell configuration like [oh-my-fish][OMF] and try the built-in _Shark_ plugin.
