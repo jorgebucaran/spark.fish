@@ -40,7 +40,7 @@ Testing Shark...
  Neutralizes negative numbers ✔
 ```
 
-The current implementation uses a simple ad-hoc test run. Check [terlar/fish-tank][fish-tank] for a more consistent test framework.
+The current implementation uses a simple ad-hoc test run based in the original. Check [Oh-My-Fish](https://github.com/bpinto/oh-my-fish)'s [fish-spec](https://github.com/bpinto/oh-my-fish/tree/master/plugins/fish-spec) or [terlar/fish-tank][fish-tank] for a more consistent test framework.
 
 
 ## Usage Instructions
