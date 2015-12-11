@@ -83,7 +83,7 @@ test -t 0 # Collect data if stdin (0) is a pipe.
 
 set -l sparks ▁ ▂ ▃ ▄ ▅ ▆ ▇ █
 set -l argv (shark.split $argv)
-set -l list (printf "%s\n" $argv | sort --numeric-sort)
+set -l list (printf "%s\n" $argv | sort --general-numeric-sort)
 set -l min $list[1]
 set -l max $list[-1]
 
