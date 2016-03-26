@@ -1,0 +1,302 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "SHARK" "1" "February 2016" "" "shark"
+.
+.SH "NAME"
+\fBshark\fR \- Sparkline generator
+.
+.SH "SYNOPSIS"
+\fBshark\fR [\fIoptions\fR] [\fB\-\-version\fR] [\fB\-\-help\fR]
+.
+.br
+\fBshark\fR [\fB\-\-line\fR] [\fB\-\-field\fR=\fIformat\fR] [\fB\-\-record\fR=\fIformat\fR]
+.
+.br
+\fBshark\fR [\fB\-\-null\fR=\fIstring\fR] [\fB\-\-delim\fR=\fIregex\fR]
+.
+.br
+\fBshark\fR [\fB\-\-min\fR=\fInumber\fR] [\fB\-\-max\fR=\fInumber\fR]
+.
+.SH "DESCRIPTION"
+\fBShark\fR is a sparkline \fIhttps://en\.wikipedia\.org/wiki/Sparkline\fR generator\.
+.
+.P
+Input is read up to NULL and processed as a single record by default\. To process each line as a separate record, use the \-\-line flag\.
+.
+.P
+To process the input in real time, use \-\-max=\fInumber\fR and \-\-min=\fInumber\fR to set the dataset range in advance\.
+.
+.P
+Shark was inspired by Zach Holman\'s Spark \fIhttps://github\.com/holman/spark\fR\. Thanks to him\.
+.
+.SH "USAGE"
+.
+.IP "\(bu" 4
+Plot a sequence of numbers\.
+.
+.IP "" 0
+.
+.IP "" 4
+.
+.nf
+
+seq 8 | shark
+.
+.fi
+.
+.IP "" 0
+.
+.IP "\(bu" 4
+Plot two set of numbers and treat each as an individual dataset\.
+.
+.IP "" 0
+.
+.IP "" 4
+.
+.nf
+
+printf "%s\en" "1 2 3 4 5" "100 200 300 400 500" | shark \-n
+.
+.fi
+.
+.IP "" 0
+.
+.IP "\(bu" 4
+Draw a random sequence of numbers\.
+.
+.IP "" 0
+.
+.IP "" 4
+.
+.nf
+
+for i in (seq 42)
+    random
+end | shark
+.
+.fi
+.
+.IP "" 0
+.
+.SH "OPTIONS"
+.
+.IP "\(bu" 4
+\-n, \-\-line[=\fItrue\fR|\fIfalse\fR: Process each line as a separate record\. By default, Shark reads all the input up to NULL and uses the collected numbers as one dataset\. \-\-line changes this behavior, and forces Shark to process \fIeach\fR line as a separate record and the collected numbers from each record as different datasets\.
+.
+.IP
+A single line of input may contain one or more numbers\. If a line contains multiple numbers, processing each line separately may be preferred based on your application requirements\. To customize the record output format use \-\-record=\fIformat\fR\.
+.
+.IP "\(bu" 4
+\-f, \-\-field=\fIformat\fR: Set the field output \fIformat\fR\. A field or \fItick\fR is any of the UTF\-8 block characters used to represent the numeric values collected from the dataset\. \fIformat\fR is a printf(1) \fIhttp://linux\.die\.net/man/1/printf\fR valid format string\. The default value is \fB"%s"\fR\. You can display the numeric value of the current field using an additional \fB%d\fR\. For example, \fB"%s\et%d\en"\fR will display each tick in a new line followed by a \fItab\fR and the corresponding number collected from the dataset\.
+.
+.IP "\(bu" 4
+\-r, \-\-record=\fIformat\fR: Set the record output \fIformat\fR\. Typically, a record consists of a single line of input and a dataset of one or more lines\. The default value is a new line \fB\en\fR\. You can force all output to be displayed in a single line regardless of \-\-line by setting this option to an empty string \-\-record=\fI""\fR\.
+.
+.IP
+The following additional format markers are available:
+.
+.IP "\(bu" 4
+The first \fB%d\fR after \fB%s\fR displays the \fIlargest\fR number in the data set\.
+.
+.br
+
+.
+.IP "\(bu" 4
+The second \fB%d\fR displays the \fIsmallst\fR number in the data set\.
+.
+.br
+
+.
+.IP "\(bu" 4
+The third \fB%d\fR displays the total number of fields in the record\.
+.
+.br
+
+.
+.IP "" 0
+.
+.IP
+For example, \fB"\etMAX %5d | MIN %5d\en"\fR will display each record in a single line, followed by a tab and the \fIlargest\fR and \fIsmallest\fR value; right\-column aligned by 5 spaces\.
+.
+.IP "\(bu" 4
+\-M, \-\-max=\fInumber\fR: Set the maximum value in the dataset\. If this option is set, Shark does not calculate the max value and uses \fInumber\fR instead\.
+.
+.IP
+Typically, Shark must read the entire dataset, or line record if \-\-line was used, in order to calculate both min and max and draw a sparkline\.
+.
+.IP
+Use this option together with \-\-min=\fInumber\fR to process and draw the input in real time\.
+.
+.IP "\(bu" 4
+\-m, \-\-min=\fInumber\fR: Set the minimum value in the dataset\. If this option is set, Shark does not calculate the min value and uses \fInumber\fR instead\.
+.
+.IP
+Use this option together with \-\-max=\fInumber\fR to draw the input in real time\.
+.
+.IP "\(bu" 4
+\-d, \-\-delim=\fIregex\fR: Use \fIregex\fR as the number delimiter\. This value is used to extract numbers from each line of the input\. The default value is \fB[, ]\fR\.
+.
+.IP "\(bu" 4
+\-\-null=\fIstring\fR: Use \fIstring\fR to display null values in the dataset\. Items that could not be parsed from the dataset as numbers, will be displayed using \fIstring\fR\. A white space \fB" "\fR is displayed by default\. To print nothing, use an empty string \fB""\fR\.
+.
+.IP "\(bu" 4
+\-h, \-\-help: Show usage help\.
+.
+.IP "" 0
+.
+.SH "EXAMPLES"
+To run the bundled examples:
+.
+.IP "" 4
+.
+.nf
+
+source examples/shark\.fish
+.
+.fi
+.
+.IP "" 0
+.
+.IP "\(bu" 4
+Visualize bubble sort\.
+.
+.IP "" 0
+.
+.IP "" 4
+.
+.nf
+
+for i in (seq 100)
+    printf "%s " (random)
+end | awk \-f bs\.awk | shark \-nr\er
+.
+.fi
+.
+.IP "" 0
+.
+.IP "\(bu" 4
+Visualize quicksort\.
+.
+.IP "" 0
+.
+.IP "" 4
+.
+.nf
+
+for i in (seq 100)
+    printf "%s " (random)
+end | awk \-f qs\.awk \' | shark \-nr\er
+.
+.fi
+.
+.IP "" 0
+.
+.IP "\(bu" 4
+Display realtime data\.
+.
+.IP "" 0
+.
+.IP "" 4
+.
+.nf
+
+curl \-s $data | shark \-\-min=0 \-\-max=32766 \-r\er
+.
+.fi
+.
+.IP "" 0
+.
+.IP "\(bu" 4
+Display a moving wave through the terminal\.
+.
+.IP "" 0
+.
+.IP "" 4
+.
+.nf
+
+while true
+    printf "0$i + 1\en" | bc | read \-l i
+    ruby \-e "
+        (0\.\.`tput cols`\.to_i \- 1)\.collect{|x|
+            printf \'%s \', (6 * Math::cos((x + $i) * Math::PI/5))\.ceil
+        }
+    " | shark \-d"[\-| ]" \-\-record="\er" \-\-null=""
+end
+.
+.fi
+.
+.IP "" 0
+.
+.SH "CAVEATS"
+From fish\-shell/issues/206 \fIhttps://github\.com/fish\-shell/fish\-shell/issues/206\fR, redirections and pipes involving blocks are run serially, not in parallel\. This causes Shark to block the pipeline and buffer the output when you pipe it to another command\.
+.
+.IP "" 4
+.
+.nf
+
+STDIN | shark | formatter
+.
+.fi
+.
+.IP "" 0
+.
+.SS "WORKAROUNDS"
+You can run Shark as an executable file, by adding the source to a file with a shebang and copying it to a directory in your \fB$PATH\fR, e\.g\., /usr/local/bin\.
+.
+.IP "" 4
+.
+.nf
+
+awk \'BEGIN { print "#!/usr/bin/env fish" } // END { print "shark $argv" }\' shark\.fish > shark
+chmod +x shark
+cp shark /usr/local/bin
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Now you should be able to pipe Shark\'s output to \fIformatter\fR and process the data without blocking\.
+.
+.IP "" 4
+.
+.nf
+
+function formatter
+    set \-l LO \eu2581
+    set \-l HI \eu2588
+
+    set \-l R (set_color red)
+    set \-l G (set_color green)
+    set \-l N (set_color normal)
+
+    sed "s/$LO/$R$LO$N/g;s/$HI/$G$HI$N/g"
+end
+
+set \-l data https://gist\.githubusercontent\.com/bucaran/af98670d9c301c89b3ed/raw
+curl \-s $data | shark \-n | formatter
+.
+.fi
+.
+.IP "" 0
+.
+.P
+\fIformatter\fR is used above to color lower ticks red and the highest block ticks green\.
+.
+.P
+Another more practical, but less flexible workaround is running Shark inside a child process\.
+.
+.IP "" 4
+.
+.nf
+
+curl \-s $data | fish \-c "shark \-n" | sed "s/$LO/$R$LO$N/;s/$HI/$G$HI$N/"
+.
+.fi
+.
+.IP "" 0
+.
+.P
+\fINote\fR: Shark must be installed as a function in your \fB$fisher_function_path\fR\. Otherwise, it will not be available to the child process\.
