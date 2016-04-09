@@ -1,5 +1,9 @@
-set -l IFS \t
-
-shark -h | __fisher_complete shark
-
 complete -xc shark -d "Sparkline generator" -a "\t"
+complete -c shark -s n -l line -d "Process each line as a record"
+complete -c shark -s f -l field -d "=<format> Set field output format"
+complete -c shark -s r -l record -d "=<format> Set record output format"
+complete -c shark -s m -l min -d "=<number> Set minimum numeric value"
+complete -c shark -s M -l max -d "=<number> Set maximum numeric value"
+complete -c shark -s d -l delim -d "=<regex> Use <regex> as number separator"
+complete -c shark -l null -d "=<string> Use <string> to display null values"
+complete -c shark -s h -l help -d "Show usage help"
