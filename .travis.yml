@@ -5,5 +5,5 @@ before_install:
     - sudo apt-get -y install fish
 script:
     - git clone https://github.com/fisherman/fisherman && make -f fisherman/Makefile
-    - fish -c "fisher install https://github.com/fishery/fishtape ."
+    - fish -c "fisher install https://github.com/fisherman/fishtape ."
     - fish -c "fishtape test/*.fish"

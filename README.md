@@ -170,8 +170,8 @@ curl -s $data | fish -c "shark -n" | sed "s/$LO/$R$LO$N/;s/$HI/$G$HI$N/"
 
 [slack-link]: https://fisherman-wharf.herokuapp.com/
 [slack-badge]: https://img.shields.io/badge/slack-join%20the%20chat-00B9FF.svg?style=flat-square
-[travis-link]: https://travis-ci.org/fishery/shark
-[travis-badge]: https://img.shields.io/travis/fishery/shark.svg?style=flat-square
+[travis-link]: https://travis-ci.org/fisherman/shark
+[travis-badge]: https://img.shields.io/travis/fisherman/shark.svg?style=flat-square
 
 [Spark]: https://github.com/holman/spark
 [Fisherman]: https://github.com/fisherman/fisherman
