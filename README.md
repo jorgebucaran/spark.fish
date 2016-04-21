@@ -13,10 +13,10 @@ Shark was inspired by Zach Holman's [Spark]. Thanks to him.
 
 ## Install
 
-With [Fisherman]:
+With [fisherman]:
 
 ```fish
-fisher install shark
+fisher shark
 ```
 
 ## Usage
@@ -174,5 +174,5 @@ curl -s $data | fish -c "shark -n" | sed "s/$LO/$R$LO$N/;s/$HI/$G$HI$N/"
 [travis-badge]: https://img.shields.io/travis/fisherman/shark.svg?style=flat-square
 
 [Spark]: https://github.com/holman/spark
-[Fisherman]: https://github.com/fisherman/fisherman
+[fisherman]: https://github.com/fisherman/fisherman
 [fish]: https://github.com/fish-shell/fish-shell
