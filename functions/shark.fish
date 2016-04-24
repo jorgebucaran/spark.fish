@@ -7,8 +7,6 @@ function shark --description 'Sparkline generator'
     set -l max 0
     set -l null " "
 
-    set -g shark_path (dirname (status -f))
-
     getopts $argv | while read -l 1 2
         switch $1
             case n line
