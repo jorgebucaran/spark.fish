@@ -169,9 +169,9 @@ curl -s $data | fish -c "shark -n" | sed "s/$LO/$R$LO$N/;s/$HI/$G$HI$N/"
 *Note*: Shark must be installed as a function in your `$fisher_function_path`. Otherwise, it will not be available to the child process.
 
 [slack-link]: https://fisherman-wharf.herokuapp.com/
-[slack-badge]: https://img.shields.io/badge/slack-join%20the%20chat-00B9FF.svg?style=flat-square
+[slack-badge]: https://fisherman-wharf.herokuapp.com/badge.svg
 [travis-link]: https://travis-ci.org/fisherman/shark
-[travis-badge]: https://img.shields.io/travis/fisherman/shark.svg?style=flat-square
+[travis-badge]: https://img.shields.io/travis/fisherman/shark.svg
 
 [Spark]: https://github.com/holman/spark
 [fisherman]: https://github.com/fisherman/fisherman
