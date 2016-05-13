@@ -51,7 +51,7 @@ test "$TESTNAME - use custom delimiter as number separator"
 end
 
 test "$TESTNAME - --field=%s `%d` shows numeric value"
-    (printf "%s\n" 5,2,10 | shark --field="%s %d, ") = "▄ 5,▁ 2,█ 10,"
+    (printf "%s\n" 5,2,10 | shark --field="%s %d, ") = "▄ 5, ▁ 2, █ 10, "
 end
 
 test "$TESTNAME - --field=%s `%d` shows numeric value"

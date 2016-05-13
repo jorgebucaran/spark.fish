@@ -1,4 +1,4 @@
-function shark --description 'Sparkline generator'
+function shark -d "Sparkline generator"
     set -l field "%s"
     set -l record "\n"
     set -l delim "[, ]"
@@ -36,22 +36,12 @@ function shark --description 'Sparkline generator'
                 set delim "$2"
 
             case h help
-                printf "Usage: shark [--line] [--field[=<format>]] [--record[=<format>]]\n"
-                printf "             [--max=<n>] [--min=<n>] [--delim=<regex>] [--help]\n\n"
-
-                printf "     -n --line              Process each line as a record         \n"
-                printf "     -f --field=<format>    Set field output format               \n"
-                printf "     -r --record=<format>   Set record output format              \n"
-                printf "     -m --min=<number>      Set minimum numeric value             \n"
-                printf "     -M --max=<number>      Set maximum numeric value             \n"
-                printf "     -d --delim=<regex>     Use <regex> as number separator       \n"
-                printf "        --null=<string>     Use <string> to display null values   \n"
-                printf "     -h --help              Show this help\n"
+                __shark_usage > /dev/stderr
                 return
 
             case \*
-                printf "shark: '%s' is not a valid option\n" $1 >& 2
-                shark --help >& 2
+                printf "shark: '%s' is not a valid option\n" $1 > /dev/stderr
+                shark --help > /dev/stderr
                 return 1
         end
     end
@@ -122,4 +112,10 @@ function shark --description 'Sparkline generator'
             }
 
         '
+end
+
+function __shark_usage
+    echo "Usage: shark [(-n | --line)] [(-f | --field) FORMAT] [(-r | --record) FORMAT]"
+    echo "             [(-M | --max) NUMBER] [(-m | --min) NUMBER] [(-d | --delim) REGEX]"
+    echo "             [--null STRING] [--help]"
 end
