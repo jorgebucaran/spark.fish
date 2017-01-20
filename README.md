@@ -1,7 +1,7 @@
+# Shark
+
 [![Build Status][travis-badge]][travis-link]
 [![Slack Room][slack-badge]][slack-link]
-
-# Shark
 
 **Shark** is a sparkline generator for fish.
 
