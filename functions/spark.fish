@@ -1,4 +1,4 @@
-function shark -d "Sparkline generator"
+function spark -d "Sparkline generator"
     set -l field "%s"
     set -l record "\n"
     set -l delim "[, ]"
@@ -36,12 +36,12 @@ function shark -d "Sparkline generator"
                 set delim "$2"
 
             case h help
-                __shark_usage > /dev/stderr
+                _spark_usage > /dev/stderr
                 return
 
             case \*
-                printf "shark: '%s' is not a valid option\n" $1 > /dev/stderr
-                shark --help > /dev/stderr
+                printf "spark: '%s' is not a valid option\n" $1 > /dev/stderr
+                spark --help > /dev/stderr
                 return 1
         end
     end
@@ -114,8 +114,8 @@ function shark -d "Sparkline generator"
         '
 end
 
-function __shark_usage
-    echo "Usage: shark [(-n | --line)] [(-f | --field) FORMAT] [(-r | --record) FORMAT]"
+function _spark_usage
+    echo "Usage: spark [(-n | --line)] [(-f | --field) FORMAT] [(-r | --record) FORMAT]"
     echo "             [(-M | --max) NUMBER] [(-m | --min) NUMBER] [(-d | --delim) REGEX]"
     echo "             [--null STRING] [--help]"
 end
