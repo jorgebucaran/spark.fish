@@ -3,7 +3,7 @@
 [![Build Status](https://img.shields.io/travis/jorgebucaran/fish-spark.svg)](https://travis-ci.org/jorgebucaran/fish-spark)
 [![Releases](https://img.shields.io/github/release/jorgebucaran/fish-spark.svg?label=latest)](https://github.com/jorgebucaran/fish-spark/releases)
 
-fish-spark is a sparkline generator for the fish shell. This is an unofficial port of the original [spark.sh](https://github.com/holman/spark).
+Spark is a sparkline generator for the fish shell. This is an unofficial port of the original [spark.sh](https://github.com/holman/spark).
 
 ![](https://gitcdn.link/repo/jorgebucaran/789d7e2c08a968c7370ddbbff2c7c125/raw/3ea3780910872ca0a60d234723704a962c399187/fish-spark.svg)
 
@@ -60,7 +60,7 @@ $ spark --max=100 -- 10 20 30 40 50
 ▁▂▃▃▄
 ```
 
-This is just the tip of the iceberg. Check out [Wicked Cool Usage](https://github.com/holman/spark/wiki/Wicked-Cool-Usage) for all the things you can do with Spark.
+This is just the tip of the iceberg. Check out [Wicked Cool Usage](https://github.com/holman/spark/wiki/Wicked-Cool-Usage) for more things you can do with Spark.
 
 ## License
 
