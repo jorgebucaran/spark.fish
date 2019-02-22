@@ -15,7 +15,7 @@ function spark -d "sparkline generator"
                 echo "examples:"
                 echo "       spark 1 2 3 4"
                 echo "       seq 100 | sort -R | spark"
-                echo "       awk '\$0=length' spark.fish | spark"
+                echo "       awk \\\$0=length spark.fish | spark"
             case \*
                 echo $argv | spark $argv
         end
