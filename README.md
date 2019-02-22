@@ -1,11 +1,9 @@
-# fish-spark
+# fish-spark 
 
 [![Build Status](https://img.shields.io/travis/jorgebucaran/fish-spark.svg)](https://travis-ci.org/jorgebucaran/fish-spark)
 [![Releases](https://img.shields.io/github/release/jorgebucaran/fish-spark.svg?label=latest)](https://github.com/jorgebucaran/fish-spark/releases)
 
 Spark is a sparkline generator for the <a href=https://fishshell.com title="friendly interactive shell">fish shell</a>. It's an unofficial port of the original [spark.sh](https://github.com/holman/spark) with options for adjusting the minimum and maximum values of the input and [faster execution time](#performance).
-
-###### ▁▁▁▁▁▁▁▁▁▂▆▁▃▆▆▆▃▁▁▁▁▁▂▃▄▂▆▆▃▃▄▅▂▃▁▁▁▄▁▁▁▇▁▇▁▁▃▃▅▂▄▅▃▃▁▁▁▁▂▁▁▇▆▃▃█▂▁▁▁▁▁▁
 
 ## Installation
 
