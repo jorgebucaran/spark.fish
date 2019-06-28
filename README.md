@@ -1,7 +1,6 @@
-# fish-spark 
+# fish-spark [![Releases](https://img.shields.io/github/release/jorgebucaran/fish-spark.svg?label=&color=0080FF)](https://github.com/jorgebucaran/fish-spark/releases/latest) [![Travis CI](https://img.shields.io/travis/jorgebucaran/fish-spark.svg?label=)](https://travis-ci.org/jorgebucaran/fish-spark)
 
-[![Build Status](https://img.shields.io/travis/jorgebucaran/fish-spark.svg)](https://travis-ci.org/jorgebucaran/fish-spark)
-[![Releases](https://img.shields.io/github/release/jorgebucaran/fish-spark.svg?label=latest)](https://github.com/jorgebucaran/fish-spark/releases)
+> ▁▂▃▅▂▇ in your shell.
 
 Spark is a sparkline generator for the <a href=https://fishshell.com title="friendly interactive shell">fish shell</a>. It's an unofficial port of the original [spark.sh](https://github.com/holman/spark) with options for adjusting the minimum and maximum values of the input and [faster execution time](#performance).
 
@@ -58,13 +57,11 @@ $ spark --max=100 -- 10 20 30 40 50
 ▁▂▃▃▄
 ```
 
-And this is just the tip of the iceberg.
-
-Check out [Wicked Cool Usage](https://github.com/holman/spark/wiki/Wicked-Cool-Usage) for more things you can do with Spark.
+Want to see what else Spark can do? Check out [Wicked Cool Usage](https://github.com/holman/spark/wiki/Wicked-Cool-Usage) and prepare to be amazed!
 
 ## Performance
 
-Spark is considerably faster than the original [`spark.sh`](https://github.com/holman/spark), reading and writing relatively large datasets under milliseconds.
+Spark is up to 400x faster (that's not a typo!) than the original [`spark.sh`](https://github.com/holman/spark), reading and writing relatively large datasets under milliseconds.
 
 ```console
 $ time fish -c "seq 10000 | sort -R | spark" >/dev/null
@@ -73,7 +70,7 @@ $ time fish -c "seq 10000 | sort -R | spark" >/dev/null
 $ time fish -c "seq 10000 | sort -R | spark.sh" >/dev/null
        86.15 real        84.44 user         0.53 sys
 ```
-  
+
 ## License
 
 [MIT](LICENSE.md)
