@@ -1,4 +1,4 @@
-# fish-spark [![Releases](https://img.shields.io/github/release/jorgebucaran/fish-spark.svg?label=&color=0080FF)](https://github.com/jorgebucaran/fish-spark/releases/latest) [![Travis CI](https://img.shields.io/travis/jorgebucaran/fish-spark.svg?label=)](https://travis-ci.org/jorgebucaran/fish-spark)
+# fish-spark [![Releases](https://img.shields.io/github/release/jorgebucaran/fish-spark.svg?label=&color=0080FF)](https://github.com/jorgebucaran/fish-spark/releases/latest)
 
 > ▁▂▃▅▂▇ in your fish shell.
 
