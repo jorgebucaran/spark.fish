@@ -8,7 +8,7 @@ Spark is a sparkline generator for the <a href=https://fishshell.com title="frie
 
 Install with [Fisher](https://github.com/jorgebucaran/fisher) (recommended):
 
-```
+```console
 fisher add jorgebucaran/fish-spark
 ```
 
