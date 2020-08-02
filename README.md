@@ -1,15 +1,15 @@
-# fish-spark [![Releases](https://img.shields.io/github/release/jorgebucaran/fish-spark.svg?label=&color=0366d6)](https://github.com/jorgebucaran/fish-spark/releases/latest)
+# spark.fish
 
 > ▁▂▃▅▂▇ in your fish shell.
 
-Spark is a sparkline generator for the <a href=https://fishshell.com title="friendly interactive shell">fish shell</a>. It's an unofficial port of the original [spark.sh](https://github.com/holman/spark) with options for adjusting the minimum and maximum values of the input and [faster execution time](#performance).
+Spark is a sparkline generator for <a href=https://fishshell.com title="friendly interactive shell">fish</a>. It's an unofficial port of [spark.sh](https://github.com/holman/spark) with options for adjusting the minimum and maximum values of the input and all-around [better performance](#performance).
 
 ## Installation
 
 Install with [Fisher](https://github.com/jorgebucaran/fisher) (recommended):
 
 ```console
-fisher add jorgebucaran/fish-spark
+fisher add jorgebucaran/spark.fish
 ```
 
 <details>
@@ -20,19 +20,12 @@ fisher add jorgebucaran/fish-spark
 Copy [`spark.fish`](spark.fish) to any directory on your function path.
 
 ```fish
-set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-curl https://git.io/spark.fish --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/spark.fish
+curl https://git.io/spark.fish --create-dirs -sLo ~/.config/fish/functions/spark.fish
 ```
-
-To uninstall, remove the file.
 
 </details>
 
-### System Requirements
-
-- [fish](https://github.com/fish-shell/fish-shell) 2.0
-
-## Usage
+## Getting Started
 
 You have a set of numbers which can be comma-delimited, separated by spaces, newlines, or tabs. What's a simple way to visualize these data on the terminal? Sparklines!
 
