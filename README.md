@@ -15,7 +15,7 @@ fisher add jorgebucaran/spark.fish
 <details>
 <summary>Not using a package manager?</summary>
 
----
+###
 
 Copy [`spark.fish`](spark.fish) to any directory on your function path.
 
