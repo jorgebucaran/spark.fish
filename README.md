@@ -25,7 +25,7 @@ curl https://git.io/spark.fish --create-dirs -sLo ~/.config/fish/functions/spark
 
 </details>
 
-## Getting Started
+## Quickstart
 
 You have a set of numbers which can be comma-delimited, separated by spaces, newlines, or tabs. What's a simple way to visualize these data on the terminal? Sparklines!
 
