@@ -1,18 +1,16 @@
-set -g spark_version 1.0.0
-
-complete -xc spark -n __fish_use_subcommand -a --help -d "Show usage help"
-complete -xc spark -n __fish_use_subcommand -a --version -d "$spark_version"
-complete -xc spark -n __fish_use_subcommand -a --min -d "Minimum range value"
-complete -xc spark -n __fish_use_subcommand -a --max -d "Maximum range value"
-
-function spark -d "sparkline generator"
+function spark -d "Sparkline generator"
     if isatty
         switch "$argv"
-            case {,-}-v{ersion,}
-                echo "spark version $spark_version"
-            case {,-}-h{elp,}
-                echo "usage: spark [--min=<n> --max=<n>] <numbers...>  Draw sparklines"
-                echo "examples:"
+            case -v --version
+                echo "spark, version 1.0.0"
+            case "" -h --help
+                echo "Usage: spark <numbers...>  Draw sparklines"
+                echo "Options:"
+                echo "       --min=<n>           Minimum range value"
+                echo "       --max=<n>           Maximum range value"
+                echo "       -v or --version     Print version"
+                echo "       -h or --help        Print this help message"
+                echo "Examples:"
                 echo "       spark 1 2 3 4"
                 echo "       seq 100 | sort -R | spark"
                 echo "       awk \\\$0=length spark.fish | spark"

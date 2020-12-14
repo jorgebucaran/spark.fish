@@ -1,29 +1,16 @@
 # spark.fish
 
-> ▁▂▃▅▂▇ in your fish shell.
+> ▁▂▃▅▂▇ in [Fish](https://fishshell.com/).
 
-Spark is a sparkline generator for <a href=https://fishshell.com title="friendly interactive shell">fish</a>. It's an unofficial port of [spark.sh](https://github.com/holman/spark) with options for adjusting the minimum and maximum values of the input and all-around [better performance](#performance).
+Spark is a sparkline generator for [Fish](https://fishshell.com). It's an unofficial port of [spark.sh](https://github.com/holman/spark) with options for adjusting the minimum and maximum values of the input and all-around [better performance](#performance).
 
 ## Installation
 
-Install with [Fisher](https://github.com/jorgebucaran/fisher) (recommended):
+Install with [Fisher](https://github.com/jorgebucaran/fisher):
 
 ```console
-fisher add jorgebucaran/spark.fish
+fisher install jorgebucaran/spark.fish
 ```
-
-<details>
-<summary>Not using a package manager?</summary>
-
-###
-
-Copy [`spark.fish`](spark.fish) to any directory on your function path.
-
-```fish
-curl https://git.io/spark.fish --create-dirs -sLo ~/.config/fish/functions/spark.fish
-```
-
-</details>
 
 ## Quickstart
 
