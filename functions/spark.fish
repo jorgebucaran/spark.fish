@@ -2,7 +2,7 @@ function spark --description Sparklines
     argparse --ignore-unknown --name=spark v/version h/help m/min= M/max= -- $argv || return
 
     if set --query _flag_version[1]
-        echo "spark, version 1.0.0"
+        echo "spark, version 1.1.0"
     else if set --query _flag_help[1]
         echo "Usage: spark <numbers ...>"
         echo "       stdin | spark"
