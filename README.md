@@ -1,8 +1,8 @@
 # spark.fish
 
-> ▁▂▃▅▂▇ in [Fish](https://fishshell.com/).
+> Sparklines for [Fish](https://fishshell.com).
 
-Spark is a sparkline generator for [Fish](https://fishshell.com). It's an unofficial port of [spark.sh](https://github.com/holman/spark) with options for adjusting the minimum and maximum values of the input and all-around [better performance](#performance).
+Unofficial port of [spark.sh](https://github.com/holman/spark) with `--min`, `--max` flags and improved [performance](#performance).
 
 ## Installation
 
@@ -14,41 +14,91 @@ fisher install jorgebucaran/spark.fish
 
 ## Quickstart
 
-You have a set of numbers which can be comma-delimited, separated by spaces, newlines, or tabs. What's a simple way to visualize these data on the terminal? Sparklines!
+You want to visualize a range of numbers right in your terminal.
 
 ```console
-$ spark 0 1 2 3
-▁▃▅█
+$ spark 1 2 4 8
+▁▂▄█
 ```
 
-Spark can read from standard input as well. Here is a random sequence of numbers.
+And here is a sequence of random numbers.
 
 ```console
-$ seq 80 | sort -R | spark
-▁▅▄▄▂▁▂▅▂▇▄▅▄▃▃▄▁▂▃▁▁▅▄▇▃▆▆▂▄▄▂▆▆▆▇▃▆▇▁▄▃▄▆▅▄█▅▁▃▆▁▁▁▂▆▁▅▅▇▇▅▇▅▇▃▆▄▂▇▃▃▅▂▁▇▆▂▇▂▃
+$ seq 64 | sort --random-sort | spark
+▅▄▂▇▂▅▆▄▃█▂▅▄▁▆▆▃█▄▁▇▅▂▃▇▃▃▄▇▄▅▆▇▂▅▁▇▁▄▂▆▅▃█▇▆▆▅▆▃▄▄▇▃▂▇█▅▃█▁▂▂▆
 ```
 
-Spark calculates the smallest and largest numbers from your dataset to calibrate the height of the sparklines. To force these values to anything else use `--min=<number>` and `--max=<number>`.
+You can set the `--min=<number>` or `--max=<number>` values for your sparkline too.
 
 ```console
-$ spark 10 20 30 40 50
-▁▂▄▆█
-$ spark --max=100 -- 10 20 30 40 50
-▁▂▃▃▄
+$ seq 10 20 | spark
+▁▂▂▃▄▄▅▆▇▇█
+$ seq 10 20 | spark --min=0
+▄▅▅▆▆▆▇▇▇██
+$ seq 10 20 | spark --min=0 --max=30
+▃▄▄▄▄▄▅▅▅▅▆
 ```
 
-Want to see what else Spark can do? Check out [Wicked Cool Usage](https://github.com/holman/spark/wiki/Wicked-Cool-Usage) and prepare to be amazed!
+## Wicked Cool Usage
+
+> Most of the examples in this section are derived from the original [Wicked Cool Usage](https://github.com/holman/spark/wiki/Wicked-Cool-Usage) wiki, ported to Fish.
+
+Line lengths.
+
+```console
+$ awk \$0=length (functions --details spark) | spark
+▃▆▃▃▃▄▃▂▄▄▄▅▂▄▅▂▆▁▅▂▅▅▃▂▂▆▃█▂▁▁▁
+```
+
+Number of commits in a repo, by author.
+
+```console
+$ git shortlog --summary | string match --regex "\d+" | spark
+█▁▁▁▃▁▁▄▁▁▁
+```
+
+Total run time of processes.
+
+```console
+$ ps -A | string replace --filter --regex -- ".*(\d+):(\d+).*" "\$1 * 3600 + \$2 * 60" | bc | spark
+▇▁▂▁▆▁▂▂▁▃▁▃▁▁▁▆▁▁▁▂▁▃▂▁▁▃▁▁▁▁▁▂▁▁▂▁▁▁▁▁▆▂▃▂▁▂▃▁▆▁▁▁▂▁▁▁▁▃▂▂▁▇▁▁▁▁▆
+```
+
+LOC added per commit over the last week.
+
+```console
+$ git diff @~7 --numstat | string replace --regex -- "(^\d+).*" "\$1" | spark
+▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▂▂▃█▄▁▁
+```
+
+A moving wave through the terminal.
+
+```fish
+for i in (seq 100)
+   for j in (seq (math $COLUMNS - 1))
+      math "ceil(6 * cos(($i + $j) * pi / 5))"
+   end | spark | read sparks
+   echo -n $sparks\r && sleep .1
+end
+▆▄▂▁▂▄▆▇█▇▆▄▂▁▂▄▆▇█▇▆▄▂▁▂▄▆▇█▇▆▄▂▁▂▄▆▇█▇▆▄▂▁▂▄▆▇█▇▆▄▂▁▂▄▆▇█
+```
 
 ## Performance
 
-Spark is up to 400x faster (that's not a typo!) than the original [`spark.sh`](https://github.com/holman/spark), reading and writing relatively large datasets under milliseconds.
+Spark is faster than [`spark.sh`](https://github.com/holman/spark), reading and writing relatively large datasets under milliseconds.
 
 ```console
-$ time fish -c "seq 10000 | sort -R | spark" >/dev/null
-       0.19 real         0.19 user         0.01 sys
+$ time seq 2000 | sort --random-sort | spark
+________________________________________________________
+Executed in   27.21 millis    fish           external
+   usr time   26.40 millis    0.57 millis   25.83 millis
+   sys time    4.87 millis    1.58 millis    3.29 millis
 
-$ time fish -c "seq 10000 | sort -R | spark.sh" >/dev/null
-       86.15 real        84.44 user         0.53 sys
+$ time seq 2000 | sort --random-sort | spark.sh
+________________________________________________________
+Executed in    2.73 secs    fish           external
+   usr time    2.72 secs    0.33 millis    2.72 secs
+   sys time    0.02 secs    1.47 millis    0.02 secs
 ```
 
 ## License
