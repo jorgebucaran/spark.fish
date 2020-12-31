@@ -1,5 +1,4 @@
-complete -c spark --exclusive --long version -d "Print version"
-complete -c spark --exclusive --long help -d "Print this help message"
-
-complete -c spark --exclusive --condition "__fish_use_subcommand" --long min -d "Minimum range value"
-complete -c spark --exclusive --condition "__fish_use_subcommand" --long max -d "Maximum range value"
+complete --command spark --exclusive --long min --description "Minimum range"
+complete --command spark --exclusive --long max --description "Maximum range"
+complete --command spark --exclusive --long version --description "Print version"
+complete --command spark --exclusive --long help --description "Print this help message"
