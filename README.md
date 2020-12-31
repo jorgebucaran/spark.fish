@@ -80,6 +80,9 @@ for i in (seq 100)
    end | spark | read sparks
    echo -n $sparks\r && sleep .1
 end
+```
+
+```console
 ▆▄▂▁▂▄▆▇█▇▆▄▂▁▂▄▆▇█▇▆▄▂▁▂▄▆▇█▇▆▄▂▁▂▄▆▇█▇▆▄▂▁▂▄▆▇█▇▆▄▂▁▂▄▆▇█
 ```
 
