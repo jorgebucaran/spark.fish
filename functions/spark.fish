@@ -14,7 +14,7 @@ function spark --description Sparklines
         echo "Examples:"
         echo "       spark 1 1 2 5 14 42"
         echo "       seq 64 | sort --random-sort | spark"
-    else if isatty
+    else if set --query argv[1]
         printf "%s\n" $argv | spark --min="$_flag_min" --max="$_flag_max"
     else
         command awk -v min="$_flag_min" -v max="$_flag_max" '
